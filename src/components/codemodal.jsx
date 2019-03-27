@@ -2,11 +2,11 @@ import React from 'react';
 import hljs from 'highlight.js';
 import Modal from './modal';
 
-import dunctebot from "../snippets/dunctebot";
+import JagTag from "../snippets/jagtag";
 
 
 const libraries = {
-  'jagtag_dunctebot': dunctebot,
+  'jagtag_dunctebot': JagTag,
 };
 
 // TODO: check for localStorage availability?

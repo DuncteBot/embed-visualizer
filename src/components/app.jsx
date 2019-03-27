@@ -5,7 +5,6 @@ import Button from './button';
 import ModalContainer from './modalcontainer';
 import AboutModal from './aboutmodal';
 import CodeModal from './codemodal';
-import WarningModal from './warningmodal';
 import CodeMirror from './codemirror';
 import DiscordView from './discordview';
 

@@ -114,8 +114,8 @@ const DiscordView = React.createClass({
   getDefaultProps() {
     return {
       // TODO: make these two configurable?
-      username: 'Discord Bot',
-      avatar_url: 'https://cdn.discordapp.com/embed/avatars/0.png',
+      username: 'DuncteBot',
+      avatar_url: 'https://cdn.discordapp.com/avatars/210363111729790977/e201d914b819cd267feb1f460004f6a2.png',
 
       // hehe
       darkTheme: true,

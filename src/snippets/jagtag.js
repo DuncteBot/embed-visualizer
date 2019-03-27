@@ -3,6 +3,6 @@ export default {
   language: "javascript",
 
   generateFrom(data) {
-    return JSON.stringify(data).replace(/"([a-z0-9]+)":/g, "$1:");
+    return JSON.stringify(data).replace(/"embed":/, "embed:");
   }
 };
