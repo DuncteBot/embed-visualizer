@@ -34,8 +34,8 @@ function FooterButton(props) {
 const initialColor = Math.floor(Math.random() * 0xFFFFFF);
 const initialEmbed = {
   title: 'title ~~(did you know you can have markdown here too?)~~',
-  description: 'this supports [named links](https://discordapp.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```',
-  url: 'https://discordapp.com',
+  description: 'this supports [named links](https://dunctebot.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```',
+  url: 'https://dunctebot.com',
   color: initialColor,
   timestamp: new Date().toISOString(),
   footer: { icon_url: 'https://cdn.discordapp.com/embed/avatars/0.png', text: 'footer text' },
@@ -59,16 +59,6 @@ const initialEmbed = {
 // TODO: vary this more?
 const initialCode = JSON.stringify({
   embed: initialEmbed
-}, null, '  ');
-
-const webhookExample = JSON.stringify({
-  embeds: [
-    initialEmbed,
-    {
-      title: 'Woah',
-      description: 'You can also have multiple embeds!\n**NOTE**: The color picker does not work with multiple embeds (yet).'
-    },
-  ]
 }, null, '  ');
 
 const App = React.createClass({
@@ -147,24 +137,6 @@ const App = React.createClass({
     this.setState({ currentModal: null });
   },
 
-  toggleWebhookMode() {
-    if (!this.state.webhookExampleWasShown) {
-      this.setState({ currentModal: WarningModal });
-    } else {
-      this.validateInput(this.state.input, !this.state.webhookMode);
-    }
-  },
-
-  displayWebhookExample() {
-    this.setState({ currentModal: null, webhookExampleWasShown: true });
-    this.validateInput(webhookExample, true);
-  },
-
-  dismissWebhookExample() {
-    this.setState({ currentModal: null, webhookExampleWasShown: true });
-    this.validateInput(this.state.input, true);
-  },
-
   toggleTheme() {
     this.setState({ darkTheme: !this.state.darkTheme });
   },
@@ -185,7 +157,6 @@ const App = React.createClass({
   },
 
   render() {
-    const webhookModeLabel = `${this.state.webhookMode ? 'Dis' : 'En'}able webhook mode`;
     const themeLabel = `${this.state.darkTheme ? 'Light' : 'Dark'} theme`;
     const compactModeLabel = `${this.state.compactMode ? 'Cozy' : 'Compact'} mode`;
     const colorPickerLabel = `${!this.state.colorPickerShowing ? 'Open' : 'Close'} color picker`;
@@ -220,7 +191,6 @@ const App = React.createClass({
               <DiscordView
                 data={this.state.data}
                 error={this.state.error}
-                webhookMode={this.state.webhookMode}
                 darkTheme={this.state.darkTheme}
                 compactMode={this.state.compactMode}
               />
@@ -240,11 +210,8 @@ const App = React.createClass({
         </div>
 
         <ModalContainer
-          yes={this.displayWebhookExample}
-          no={this.dismissWebhookExample}
           close={this.closeModal}
           data={this.state.data}
-          webhookMode={this.state.webhookMode}
           darkTheme={this.state.darkTheme}
           hasError={this.state.error !== null && this.state.error !== ''}
           currentModal={this.state.currentModal}
