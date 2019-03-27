@@ -29,9 +29,9 @@ jobs:
           - node_modules
         key: v1-dependencies-{{ checksum "package.json" }}
 
-    persist_to_workspace:
-      root: ./
-      paths: ./
+    - persist_to_workspace:
+        root: ./
+        paths: ./
 
 
   docs-deploy:
