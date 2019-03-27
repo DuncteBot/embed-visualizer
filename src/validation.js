@@ -1,4 +1,4 @@
-import { botMessageSchema, webhookMessageSchema } from './constants/embedschema';
+import { botMessageSchema } from './constants/embedschema';
 
 
 function traverseObject(object, path) {
@@ -254,4 +254,4 @@ function stringifyErrors(data, errors, options) {
   return text.slice(0, -opt.separator.length);
 }
 
-export { botMessageSchema, webhookMessageSchema, registerKeywords, stringifyErrors };
+export { botMessageSchema, registerKeywords, stringifyErrors };

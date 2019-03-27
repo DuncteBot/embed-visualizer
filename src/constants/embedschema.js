@@ -102,28 +102,9 @@ const botMessageSchema = {
   'type': 'object',
   'additionalProperties': false,
   'properties': {
-    'content': {
-      'type': 'string',
-      'maxLength': 2000,
-      'trim': true
-    },
     'embed': embedSchema
   },
-  'atLeastOneOf': ['content', 'embed']
+  'atLeastOneOf': ['embed']
 };
 
-const webhookMessageSchema = {
-  'type': 'object',
-  'additionalProperties': false,
-  'properties': {
-    'username': { 'type': 'string', 'maxLength': 256 },
-    'avatar_url': { 'type': 'string' },
-    'content': { 'type': 'string', 'maxLength': 2000, 'trim': true },
-    'embeds': { 'type': 'array', 'maxItems': 10, 'items': embedSchema },
-    'tts': { 'type': 'boolean' },
-    'file': {}
-  },
-  'atLeastOneOf': ['content', 'embeds']
-};
-
-export { botMessageSchema, webhookMessageSchema };
+export { botMessageSchema };

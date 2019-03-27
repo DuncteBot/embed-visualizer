@@ -12,7 +12,6 @@ import DiscordView from './discordview';
 import Ajv from 'ajv';
 import {
   botMessageSchema,
-  webhookMessageSchema,
   registerKeywords,
   stringifyErrors,
 } from '../validation';
@@ -26,14 +25,12 @@ import {
 const ajv = registerKeywords(new Ajv({ allErrors: true }));
 const validators = {
   regular: ajv.compile(botMessageSchema),
-  webhook: ajv.compile(webhookMessageSchema),
 };
 
 function FooterButton(props) {
   return <Button {...props} className='shadow-1 shadow-hover-2 shadow-up-hover' />;
 }
 
-const initialContent = 'this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```';
 const initialColor = Math.floor(Math.random() * 0xFFFFFF);
 const initialEmbed = {
   title: 'title ~~(did you know you can have markdown here too?)~~',
@@ -61,12 +58,10 @@ const initialEmbed = {
 // this is just for convenience.
 // TODO: vary this more?
 const initialCode = JSON.stringify({
-  content: initialContent,
   embed: initialEmbed
 }, null, '  ');
 
 const webhookExample = JSON.stringify({
-  content: `${initialContent}\nWhen sending webhooks, you can have [masked links](https://discordapp.com) in here!`,
   embeds: [
     initialEmbed,
     {
@@ -177,11 +172,11 @@ const App = React.createClass({
   toggleCompactMode() {
     this.setState({ compactMode: !this.state.compactMode });
   },
-  
+
   openColorPicker() {
     this.setState({ colorPickerShowing: !this.state.colorPickerShowing });
   },
-  
+
   colorChange(color) {
     let val = combineRGB(color.rgb.r, color.rgb.g, color.rgb.b);
     if (val === 0) val = 1; // discord wont accept 0
@@ -208,7 +203,7 @@ const App = React.createClass({
         />
       </div>
     ) : null;
-    
+
     return (
       <main className='vh-100-l bg-blurple open-sans'>
 
@@ -238,7 +233,6 @@ const App = React.createClass({
               <FooterButton label={colorPickerLabel} onClick={this.openColorPicker} />
               {colorPicker}
             </div>
-            <FooterButton label={webhookModeLabel} onClick={this.toggleWebhookMode} />
             <FooterButton label={themeLabel} onClick={this.toggleTheme} />
             <FooterButton label={compactModeLabel} onClick={this.toggleCompactMode} />
             <FooterButton label='About' onClick={this.openAboutModal} />
