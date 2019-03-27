@@ -4,8 +4,9 @@
   "license": "MIT",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://leovoel.github.io/embed-visualizer/",
+  "homepage": "https://embeds.dunctebot.com/",
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "react-scripts": "0.8.5",
     "rimraf": "^2.5.4"
   },
@@ -27,6 +28,7 @@
     "build": "react-scripts build",
     "postbuild": "rimraf build/**/*.map asset build/asset-manifest.json",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build&&gh-pages -d build"
   }
 }
