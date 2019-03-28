@@ -24,35 +24,6 @@ done for the sake of more helpful visuals, and not to infringe on their copyrigh
 
 The source code is available on [GitHub](${GITHUB_REPO}), under the MIT license.
 
-### Webhook mode?
-
------------------
-
-The main difference is that instead of:
-
-\`\`\`json
-{
-  "embed": {
-    "name": "This is my really cool embed",
-    ...
-  }
-}
-\`\`\`
-
-...you should have:
-
-\`\`\`json
-{
-  "embeds": [
-    { "name": "This is my really cool embed #1", ... },
-    { "name": "This is my really cool embed #2", ... },
-    ...
-  ]
-}
-\`\`\`
-
-...and that you can also use masked links - i.e. \`[title](url)\` - on the message content.
-
 ### Caveats
 
 -----------

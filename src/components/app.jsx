@@ -49,8 +49,8 @@ const initialEmbed = {
     { name: '🤔', value: 'some of these properties have certain limits...' },
     { name: '😱', value: 'try exceeding some of them!' },
     { name: '🙄', value: 'an informative error should show up, and this view will remain as-is until all issues are fixed' },
-    { name: '<:thonkang:219069250692841473>', value: 'these last two', inline: true },
-    { name: '<:thonkang:219069250692841473>', value: 'are inline fields', inline: true }
+    { name: '<:vallode:476364589077102603>', value: 'these last two', inline: true },
+    { name: '<:valldud:476364642352889868>', value: 'are inline fields', inline: true }
   ]
 };
 
