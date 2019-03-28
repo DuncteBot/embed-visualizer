@@ -16,18 +16,12 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - build
   docs-deploy:
     working_directory: ~/repo
     docker:
       - image: node:11.12.0
     steps:
       - checkout
-      - attach_workspace:
-          at: ./
       - run:
           name: Install and configure dependencies
           command: |
@@ -36,7 +30,7 @@ jobs:
             git config user.name "duncte123"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist build
+          command: yarn deploy
 
 workflows:
   version: 2
