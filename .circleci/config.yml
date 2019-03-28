@@ -20,6 +20,9 @@ jobs:
           root: ./
           paths:
             - build
+            - build/static
+            - build/static/css
+            - build/static/js
   docs-deploy:
     docker:
       - image: node:11.12.0
