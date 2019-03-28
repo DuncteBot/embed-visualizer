@@ -32,8 +32,8 @@ jobs:
           name: Install and configure dependencies
           command: |
             yarn global add gh-pages
-            git config user.email "ci-build@duncte123.me"
-            git config user.name "ci-build"
+            git config user.email "contact@duncte123.me"
+            git config user.name "duncte123"
       - run:
           name: Deploy docs to gh-pages branch
           command: gh-pages --dist build
