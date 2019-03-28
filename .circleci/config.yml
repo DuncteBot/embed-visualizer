@@ -22,6 +22,7 @@ jobs:
       - image: node:11.12.0
     steps:
       - checkout
+      - run: yarn install
       - run:
           name: Install and configure dependencies
           command: |
