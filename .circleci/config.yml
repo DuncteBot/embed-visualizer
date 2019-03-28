@@ -11,43 +11,17 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: yarn install
+      - run: yarn deploy
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - build
-            - build/static
-            - build/static/css
-            - build/static/js
-  docs-deploy:
-    docker:
-      - image: node:11.12.0
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ./
-      - run:
-          name: Install and configure dependencies
-          command: |
-            yarn global add gh-pages
-            git config user.email "contact@duncte123.me"
-            git config user.name "duncte123"
-      - run:
-          name: Deploy docs to gh-pages branch
-          command: gh-pages -d build
 
 workflows:
   version: 2
-  build:
+  build_and_deploy:
     jobs:
-      - build
-      - docs-deploy:
-          requires:
-            - build
+      - build:
           filters:
             branches:
               only: dunctebot
